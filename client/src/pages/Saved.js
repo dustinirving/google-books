@@ -82,7 +82,7 @@ import { List } from '../components/List'
 
 // export default Saved;
 function Saved () {
-  const { books, setBooks } = useState([])
+  const [books, setBooks] = useState([])
 
   useEffect(() => {
     getSavedBooks()
