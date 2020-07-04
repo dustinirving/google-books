@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Form ({ q, handleInputChange, handleFormSubmit }) {
+function Form ({ search, handleInputChange, handleFormSubmit }) {
   return (
     <form>
       <div className='form-group'>
@@ -11,9 +11,9 @@ function Form ({ q, handleInputChange, handleFormSubmit }) {
           className='form-control'
           id='Title'
           type='text'
-          value={q}
+          value={search}
           placeholder='Ready Player One'
-          name='q'
+          name='search'
           onChange={handleInputChange}
           required
         />
