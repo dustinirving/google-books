@@ -1,3 +1,4 @@
+// Import all of the dependencies
 import React, { useState, useEffect } from 'react'
 import Jumbotron from '../components/Jumbotron'
 import Card from '../components/Card'
@@ -7,22 +8,28 @@ import API from '../utils/API'
 import { Col, Row, Container } from '../components/Grid'
 import { List } from '../components/List'
 
+// Saved page
 function Saved () {
+  // useState hook to keep track of the books
   const [books, setBooks] = useState([])
 
+  // Get the saved books on first render
   useEffect(() => {
     getSavedBooks()
   }, [])
 
+  // Call the getSavedBooks from the API module
   const getSavedBooks = () => {
     API.getSavedBooks()
       .then(res => setBooks(res.data))
       .catch(err => console.log(err))
   }
 
+  // Allow the user to delete the book from the list of saved books
   const handleBookDelete = id => {
     API.deleteBook(id).then(res => getSavedBooks())
   }
+  // JSX
   return (
     <Container>
       <Row>

@@ -1,5 +1,6 @@
-const axios = require("axios");
-const db = require("../models");
+// Require axios to make an API call
+const axios = require('axios')
+const db = require('../models')
 
 // Defining methods for the googleController
 
@@ -7,10 +8,11 @@ const db = require("../models");
 
 // It also makes sure that the books returned from the API all contain a title, author, link, description, and image
 module.exports = {
-  findAll: function(req, res) {
-    const { query: params } = req;
+  // Use axios to find all books with a specific paramater
+  findAll: function (req, res) {
+    const { query: params } = req
     axios
-      .get("https://www.googleapis.com/books/v1/volumes", {
+      .get('https://www.googleapis.com/books/v1/volumes', {
         params
       })
       .then(results =>
@@ -32,6 +34,6 @@ module.exports = {
         )
       )
       .then(books => res.json(books))
-      .catch(err => res.status(422).json(err));
+      .catch(err => res.status(422).json(err))
   }
-};
+}

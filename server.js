@@ -1,8 +1,14 @@
+// Require all of the dependencies
+// Require express to set up the server
 const express = require('express')
-
+// Require mongoose to be used as the ORM
 const mongoose = require('mongoose')
+// Require the routes
 const routes = require('./routes')
+
+// Initialize the app
 const app = express()
+// Set the port for production or development
 const PORT = process.env.PORT || 3001
 
 // Configure body parsing for AJAX requests

@@ -1,77 +1,88 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import "./style.css";
+// Import all of the dependencies
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import './style.css'
 
-class Nav extends Component {
-  state = {
-    open: false,
-    width: window.innerWidth
-  };
+// Navbar Component
+function Nav () {
+  // Make use of React hooks to use state
+  const [open, setOpen] = useState(false)
+  const [width, setWidth] = useState(window.innerWidth)
 
-  updateWidth = () => {
-    const newState = { width: window.innerWidth };
+  // UpdateWidth function
+  const updateWidth = () => {
+    const newWidth = window.innerWidth
 
-    if (this.state.open && newState.width > 991) {
-      newState.open = false;
+    if (open && newWidth > 991) {
+      setOpen(false)
     }
-
-    this.setState(newState);
-  };
-
-  toggleNav = () => {
-    this.setState({ open: !this.state.open });
-  };
-
-  componentDidMount() {
-    window.addEventListener("resize", this.updateWidth);
+    setWidth(newWidth)
   }
 
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updateWidth);
+  // Toggle the navbar function
+  const toggleNav = () => {
+    setOpen(!open)
   }
 
-  render() {
-    return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-light mb-2">
-        <Link className="navbar-brand" to="/">
-          Google Books
-        </Link>
-        <button
-          onClick={this.toggleNav}
-          className="navbar-toggler"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon" />
-        </button>
-        <div className={`${this.state.open ? "" : "collapse "}navbar-collapse`} id="navbarNav">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <Link
-                onClick={this.toggleNav}
-                className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}
-                to="/"
-              >
-                Search
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                onClick={this.toggleNav}
-                className={window.location.pathname === "/saved" ? "nav-link active" : "nav-link"}
-                to="/saved"
-              >
-                Saved
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    );
-  }
+  // Use Effect hook for component did mount and component will unmount
+  useEffect(() => {
+    window.addEventListener('resize', updateWidth)
+    return () => {
+      window.removeEventListener('resize', updateWidth)
+    }
+  }, [])
+
+  return (
+    <nav className='navbar navbar-expand-lg navbar-light bg-light mb-2'>
+      <Link className='navbar-brand' to='/'>
+        Google Books
+      </Link>
+      <button
+        onClick={toggleNav}
+        className='navbar-toggler'
+        data-toggle='collapse'
+        data-target='#navbarNav'
+        aria-controls='navbarNav'
+        aria-expanded='false'
+        aria-label='Toggle navigation'
+      >
+        <span className='navbar-toggler-icon' />
+      </button>
+      <div
+        className={`${open ? '' : 'collapse '}navbar-collapse`}
+        id='navbarNav'
+      >
+        <ul className='navbar-nav'>
+          <li className='nav-item'>
+            <Link
+              onClick={toggleNav}
+              className={
+                window.location.pathname === '/'
+                  ? 'nav-link active'
+                  : 'nav-link'
+              }
+              to='/'
+            >
+              Search
+            </Link>
+          </li>
+          <li className='nav-item'>
+            <Link
+              onClick={toggleNav}
+              className={
+                window.location.pathname === '/saved'
+                  ? 'nav-link active'
+                  : 'nav-link'
+              }
+              to='/saved'
+            >
+              Saved
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  )
 }
 
-export default Nav;
+export default Nav

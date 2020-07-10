@@ -1,5 +1,7 @@
+// Import React to use JSX
 import React from 'react'
 
+// Form function to allow the user to search for a particular book
 function Form ({ search, handleInputChange, handleFormSubmit }) {
   return (
     <form>

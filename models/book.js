@@ -1,6 +1,9 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+// Require mongoose to defing the schema for a book
+const mongoose = require('mongoose')
+// Initialize a Schema
+const Schema = mongoose.Schema
 
+// Define all the properties for the schema
 const bookSchema = new Schema({
   title: { type: String, required: true },
   subtitle: { type: String },
@@ -9,8 +12,10 @@ const bookSchema = new Schema({
   description: { type: String, required: true },
   image: { type: String, required: true },
   googleId: { type: String, required: true, unique: true }
-});
+})
 
-const Book = mongoose.model("Book", bookSchema);
+// Assign a variable to the Book model
+const Book = mongoose.model('Book', bookSchema)
 
-module.exports = Book;
+// Export Book
+module.exports = Book

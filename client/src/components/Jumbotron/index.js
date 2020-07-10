@@ -1,8 +1,10 @@
-import React from "react";
-import "./style.css";
+// Import the dependencies
+import React from 'react'
+import './style.css'
 
-function Jumbotron({ children }) {
-  return <div className="jumbotron mt-4">{children}</div>;
+// Jumbotron functional component
+function Jumbotron ({ children }) {
+  return <div className='jumbotron mt-4'>{children}</div>
 }
 
-export default Jumbotron;
+export default Jumbotron

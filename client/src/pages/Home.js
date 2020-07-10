@@ -1,3 +1,4 @@
+// Import all of the dependencies
 import React, { useState } from 'react'
 import Jumbotron from '../components/Jumbotron'
 import Card from '../components/Card'
@@ -8,11 +9,15 @@ import API from '../utils/API'
 import { Col, Row, Container } from '../components/Grid'
 import { List } from '../components/List'
 
+// This is the Home Page
 function Home () {
+  // Use State hook for books, search and the message
   const [books, setBooks] = useState([])
   const [search, setSearch] = useState('')
   const [message, setMessage] = useState('Search For A Book To Begin!')
 
+  // Make the API call to gett all the books
+  // Use the method getBooks from the API module
   const getBooks = () => {
     API.getBooks(search)
       .then(res => setBooks(res.data))
@@ -22,14 +27,17 @@ function Home () {
       })
   }
 
+  // Handle Submit by making the API call to get all the books
   const handleFormSubmit = event => {
     event.preventDefault()
     getBooks()
   }
 
+  // Event listener function to save the specific book
   const handleBookSave = id => {
     const book = books.find(book => book.id === id)
 
+    // Use the method saveBook() from the API module
     API.saveBook({
       googleId: book.id,
       title: book.volumeInfo.title,
@@ -41,6 +49,7 @@ function Home () {
     }).then(() => getBooks())
   }
 
+  // JSX to render
   return (
     <Container>
       <Row>

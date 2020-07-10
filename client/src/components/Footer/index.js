@@ -1,14 +1,16 @@
-import React from "react";
+// Import react ro render jsx
+import React from 'react'
 
-function Footer() {
+// Define the Footer component
+function Footer () {
   return (
     <footer>
       <hr />
-      <p className="pull-right">
-        <i className="fab fa-github" /> Proudly built using React.js
+      <p className='pull-right'>
+        <i className='fab fa-github' /> Proudly built using React.js
       </p>
     </footer>
-  );
+  )
 }
 
-export default Footer;
+export default Footer
