@@ -4,9 +4,9 @@
 
 Google Books allows the user to use the Google API to search for a book. They can then view the book in the google play store or they can choose to save the book into their list of saved books. The user can view their saved books and delete individual books if they wish to do so.
 
-https://dustinirving.github.io/employee-directory/
+https://books-directory.herokuapp.com/
 
-![Budget](./gifs/directory.gif)
+![Budget](./gifs/books.gif)
 
 1. [Installation](#Installation)
 2. [Usage](#Usage)
@@ -15,7 +15,7 @@ https://dustinirving.github.io/employee-directory/
 
 ## Installation
 
-### The following npm packages are dependencies:
+### The following npm packages are frontend dependencies:
 
 - "@testing-library/jest-dom": "^4.2.4",
 - "@testing-library/react": "^9.5.0",
@@ -25,13 +25,24 @@ https://dustinirving.github.io/employee-directory/
 - "react-router-dom": "^5.2.0",
 - "react-scripts": "3.4.1"
 
+### The following npm packages are backend dependencies:
+
+- "axios": "^0.18.0",
+- "express": "^4.16.3",
+- "if-env": "^1.0.4",
+- "mongoose": "^5.3.16"
+
 ## Usage
 
 1. Navigate to the home page.
 
-2. Click the button "Order By" and choose a category
+2. Search a book
 
-3. Type in the search bar to filter out any values from the table
+3. View the book on the play store or save it to your collection
+
+4. Click on the "Saved Tab" to view your collection of books
+
+5. Delete any book from your collection
 
 ## License & Copyright
 
